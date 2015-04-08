@@ -3,25 +3,51 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="timeSince.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Twittler</title>
   </head>
   <body>
+    <h1>Twittler</h1>
+    <p>I am the Almighty Twittler</p>
+    <div class="newtweets">
+      <button>Show New Tweets</button>
+        <ul>
+
+        </ul>
+    </div>
+    <div class="tweetstream"></div>
+
     <script>
-
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var getNewTweets = function() {
+          var index = 0;
+          $stream.html('');
+          while(index < streams.home.length - 1){
+            var tweet = streams.home[index];
+            var $tweetBox = $('<div class="tweet"></div>');
+            var $userAndStamp = $('<div></div>');
+            var $tweet = $('<div></div>');
+            $userAndStamp.text('@' + tweet.user + ': ' + ' (' + timeSince(tweet.created_at) + ' ago)');
+            $tweet.text(tweet.message);
+            $userAndStamp.appendTo($tweetBox);
+            $tweet.appendTo($tweetBox);
+            $tweetBox.prependTo($stream);
+            index += 1;
+          }
+        };
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        var $body = $('body');
+        var $stream = $('.tweetstream');
+        getNewTweets();
+        $('button').on('click', getNewTweets);
+
 
       });
 
     </script>
+
+    
+
   </body>
 </html>
