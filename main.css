@@ -1,29 +1,58 @@
 
 body {
 	text-align: center;
-	border-style: solid;
-	border-color: #4099FF;
-	margin: 10px 400px 10px 400px;
-	background-color: white;
-	border-radius: 17px
+	
 }
 
 h1 {
 	color: #4099FF;
-	font: sans-serif;
+	font-family: sans-serif;
+}
+
+p {
+	font-family: sans-serif;
 }
 
 .tweetstream {
+  border-style: solid;
+  border-color: #4099FF;
+  margin: 10px 400px 10px 400px;
+  background-color: white;
+  border-radius: 17px;
   text-align: left;	
   margin-bottom: 10px;
   background-color: white;
-  border-radius: 5px
+  border-radius: 9px;
 }
 
 .tweet {
+	border-radius: 7px;
+	font: normal 13px/17px Helvetica, Arial, sans-serif;
 	border-style: solid;
 	border-width: 1px;
 	border-color: lightgrey;
 	padding: 3px;
+	padding-left: 5px;
 }
 
+button {
+	background-color:#4099FF;
+	border-radius:18px;
+	border:1px solid lightgrey;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	outline: none;
+}
+
+button:hover {
+	background-color: #4099D0;
+}
+
+aside {
+	float: left;
+	text-align: center;
+	padding: 20px;
+}
