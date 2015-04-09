@@ -74,6 +74,12 @@ button {
 	font-weight: bold;
 }
 
+.username:hover {
+	text-decoration: underline;
+	color: blue;
+	cursor: pointer;
+}
+
 .user-button {
 	width: 200px;
 }
@@ -81,7 +87,6 @@ button {
 button:hover {
 	background-color: #4099D0;
 }
-
 
 footer {
 	text-align: center;
