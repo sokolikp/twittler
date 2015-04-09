@@ -11,76 +11,89 @@
     <h1>Twittler</h1>
     <p>I am the Almighty Twittle Horn</p>
     <div class="newtweets">
-      <button>Show New Tweets</button>
-        <ul>
-
-        </ul>
+      <button class="tweet-button">Show New Tweets</button>
+        <ul></ul>
     </div>
-    <div class="tweetstream"></div>
+    <section class="tweetstream"></section>
+    <aside class="user-list">
+      <h3>Users</h3>     
+    </aside>
+    <aside class="right-buffer">
+      <h3>Other Links</h3>
+        <a href="https://www.youtube.com/watch?v=tntOCGkgt98" target="_blank">Cat Videos</a>
+        <ul></ul>
+        <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+        <ul></ul>
+        <a href="http://www.reddit.com/" target="_blank">Reddit</a>
+        <ul></ul>
+        <a href="http://www.quora.com/" target="_blank">Quora</a>   
+    </aside>
 
     <script>
       $(document).ready(function(){
 
-        //var index = 0;
+
         var getNewTweets = function() {
           var index = 0;
           $stream.html('');
           while(index < streams.home.length - 1){
             var tweet = streams.home[index];
             var $tweetBox = $('<div class="tweet"></div>');
-            var $timeStamp = $('<div></div>');
-            //var $userStamp = $('<span></span>');
+            var $timeStamp = $('<span class="time"></span>');          
+            var $userStamp = $('<span class="username"><strong></strong></span>');
             var $tweet = $('<div></div>');
-            //$userStamp.text('@' + tweet.user + ':'); 
-            $timeStamp.text('@' + tweet.user + ':' + ' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
+            $userStamp.text('@' + tweet.user + ':'); 
+            $timeStamp.text(' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
             $tweet.text(tweet.message);
 
+            $userStamp.appendTo($tweetBox);
             $timeStamp.appendTo($tweetBox);
-            //$userStamp.appendTo($tweetBox);
             $tweet.appendTo($tweetBox);
             $tweetBox.prependTo($stream);
             index += 1;
           }         
         };
+        var showUserTweets = function() {
+          var index=0;
+          $stream.html('');
+          while(index < streams.home.length - 1){
+            var tweet = streams.users[$(this).text()][index];
+            var $tweetBox = $('<div class="tweet"></div>');
+            var $timeStamp = $('<span class="time"></span>');          
+            var $userStamp = $('<span class="username"><strong></strong></span>');
+            var $tweet = $('<div></div>');
+            $userStamp.text('@' + tweet.user + ':'); 
+            $timeStamp.text(' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
+            $tweet.text(tweet.message);
+
+            $userStamp.appendTo($tweetBox);
+            $timeStamp.appendTo($tweetBox);
+            $tweet.appendTo($tweetBox);
+            $tweetBox.prependTo($stream);
+            index += 1;
+          }
+        };
 
         var $body = $('body');
         var $stream = $('.tweetstream');
+        var $userList = $('.user-list');
+        for(user in streams.users) {
+          var $user = $('<button class="user-button"</button>');
+          var $div = $('<div></div>');
+          $user.text(user);
+          $user.appendTo($userList);
+          $div.appendTo($userList);
+        }
+
         getNewTweets();
         //setTimeout( function(){ $('title').text('(' + (streams.home.length - 1 - index) + ')' + 'Twittler');}, 100);
-        $('button').on('click', getNewTweets);
-
-        $(".users").click(function() {
-          var username = $(this).username;
-          $stream.html('');
-          for (var tweet in streams.users.username) {
-            var $tweetBox = $('<div class="tweet"></div>');
-            var $timeStamp = $('<div></div>');
-            //var $userStamp = $('<span></span>');
-            var $tweet = $('<div></div>');
-            //$userStamp.text('@' + tweet.user + ':'); 
-            $timeStamp.text('@' + tweet.user + ':' + ' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
-            $tweet.text(tweet.message);
-
-            $timeStamp.appendTo($tweetBox);
-            //$userStamp.appendTo($tweetBox);
-            $tweet.appendTo($tweetBox);
-            $tweetBox.prependTo($stream);
-
-            for(var user in streams.users) {
-              var $user = $('<div> class="user"</div>');
-              $user.text(user.username);
-              $user.appendTo(aside);
-            }
-          }
-        });
+        $('.tweet-button').on('click', getNewTweets);
+        $('.user-button').on('click', showUserTweets);
       });
-
     </script>
 
-    <aside>
-      <h3 class="user-list">Users</h3>
-      
-    </aside>
-
+    <footer>
+      <small>&copy; PSokolik Inc. World Wide</small>
+    </footer>
   </body>
 </html>

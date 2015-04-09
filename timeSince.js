@@ -7,26 +7,26 @@ function timeSince(date) {
     var interval = Math.floor(seconds / 31536000);
 
     if (interval > 1) {
-        return "about " + interval + " years";
+        return interval + " years";
     }
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) {
-        return "about " + interval + " months";
+        return interval + " months";
     }
     interval = Math.floor(seconds / 86400);
     if (interval > 1) {
-        return "about " + interval + " days";
+        return interval + " days";
     }
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
-        return "about " + interval + " hours";
+        return interval + " hours";
     }
     interval = Math.floor(seconds / 60);
     if (interval === 1) {
         return "about a minute";
     }
     if (interval > 1) {
-        return "about " + interval + " minutes";
+        return interval + " minutes";
     }
     if (seconds <= 5) {
         return "Just now";

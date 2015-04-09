@@ -1,7 +1,6 @@
 
 body {
 	text-align: center;
-	
 }
 
 h1 {
@@ -9,16 +8,33 @@ h1 {
 	font-family: sans-serif;
 }
 
-p {
+h3, a, p {
 	font-family: sans-serif;
 }
 
+.user-list {
+	float: left;
+	padding-left: 20px;
+	text-align: center;
+	width: 20%;
+}
+
+.right-buffer {
+	float: right;
+	width: 20%;
+	text-align: center;
+	padding-right: 40px;
+}
+
 .tweetstream {
+  /*float: right;*/
+  /*width: 40%;*/
+  display: inline-block;
+  width: 35%;
   border-style: solid;
   border-color: #4099FF;
-  margin: 10px 400px 10px 400px;
+  margin:0 auto;/*10px 300px 10px 300px;*/
   background-color: white;
-  border-radius: 17px;
   text-align: left;	
   margin-bottom: 10px;
   background-color: white;
@@ -27,12 +43,19 @@ p {
 
 .tweet {
 	border-radius: 7px;
+	/*position: relative;
+	margin: 10px 400px 10px 400px;*/
 	font: normal 13px/17px Helvetica, Arial, sans-serif;
 	border-style: solid;
 	border-width: 1px;
 	border-color: lightgrey;
 	padding: 3px;
 	padding-left: 5px;
+}
+
+.time {
+	font-style: italic;
+	font-size: 11px;
 }
 
 button {
@@ -47,12 +70,21 @@ button {
 	outline: none;
 }
 
+.username {
+	font-weight: bold;
+}
+
+.user-button {
+	width: 200px;
+}
+
 button:hover {
 	background-color: #4099D0;
 }
 
-aside {
-	float: left;
+
+footer {
 	text-align: center;
-	padding: 20px;
+	/*position:absolute; 
+	bottom:0;*/
 }
