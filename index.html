@@ -50,7 +50,7 @@
         $('button').on('click', getNewTweets);
 
         $(".users").click(function() {
-          var username = $(this).attr('class').split(' ')[1];
+          var username = $(this).username;
           $stream.html('');
           for (var tweet in streams.users.username) {
             var $tweetBox = $('<div class="tweet"></div>');
