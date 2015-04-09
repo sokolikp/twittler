@@ -40,11 +40,14 @@
             var $tweetBox = $('<div class="tweet"></div>');
             var $timeStamp = $('<span class="time"></span>');          
             var $userStamp = $('<span class="username"><strong></strong></span>');
+            var $at = $('<span class="at"></span>');
             var $tweet = $('<div></div>');
-            $userStamp.text('@' + tweet.user + ':'); 
-            $timeStamp.text(' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
+            $at.text('@')
+            $userStamp.text(tweet.user); 
+            $timeStamp.text(': (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
             $tweet.text(tweet.message);
 
+            $at.appendTo($tweetBox);
             $userStamp.appendTo($tweetBox);
             $timeStamp.appendTo($tweetBox);
             $tweet.appendTo($tweetBox);
@@ -60,11 +63,14 @@
             var $tweetBox = $('<div class="tweet"></div>');
             var $timeStamp = $('<span class="time"></span>');          
             var $userStamp = $('<span class="username"><strong></strong></span>');
+            var $at = $('<span class="at"></span>');
             var $tweet = $('<div></div>');
-            $userStamp.text('@' + tweet.user + ':'); 
-            $timeStamp.text(' (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
+            $at.text('@')
+            $userStamp.text(tweet.user); 
+            $timeStamp.text(': (' + timeSince(tweet.created_at) + (timeSince(tweet.created_at) !== 'Just now' ? ' ago)':')'));
             $tweet.text(tweet.message);
 
+            $at.appendTo($tweetBox);
             $userStamp.appendTo($tweetBox);
             $timeStamp.appendTo($tweetBox);
             $tweet.appendTo($tweetBox);
@@ -88,6 +94,7 @@
         //setTimeout( function(){ $('title').text('(' + (streams.home.length - 1 - index) + ')' + 'Twittler');}, 100);
         $('.tweet-button').on('click', getNewTweets);
         $('.user-button').on('click', showUserTweets);
+        $(document).on('click', '.username', showUserTweets)
       });
     </script>
 

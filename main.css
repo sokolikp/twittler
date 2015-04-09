@@ -70,7 +70,7 @@ button {
 	outline: none;
 }
 
-.username {
+.username, .at {
 	font-weight: bold;
 }
 
